@@ -6,6 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //scene = new juego;
+   // ui->graphicsView->setFixedSize(700,700);
+    // tamaño
+   // scene->setSceneRect(0,0,ui->graphicsView->width()-2,ui->graphicsView->height()-2);
+    //ui->graphicsView->setScene(scene);
+ //   setWindowTitle("Ladroncito");
 }
 
 MainWindow::~MainWindow()

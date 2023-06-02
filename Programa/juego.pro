@@ -11,14 +11,18 @@ CONFIG += c++17
 SOURCES += \
     comida.cpp \
     cuchillo.cpp \
+    juego.cpp \
     main.cpp \
     mainwindow.cpp \
+    personaje.cpp \
     plataforma.cpp
 
 HEADERS += \
     comida.h \
     cuchillo.h \
+    juego.h \
     mainwindow.h \
+    personaje.h \
     plataforma.h
 
 FORMS += \
@@ -28,3 +32,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    imagenes.qrc
