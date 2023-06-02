@@ -8,10 +8,10 @@ juego::juego()
     l.setTextureImage(r);
     setBackgroundBrush(l);
 
-    //cuerpo = new personaje (20,30,30);
+    cuerpo = new personaje (20,30,30);
 
     addItem(cuerpo);
-    //personaje->select_sprite(0,0);
+    cuerpo->select_sprite(0,0);
     paredes_();
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(actualizar()));
