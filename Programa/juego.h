@@ -5,12 +5,12 @@
 #include <QTimer>
 #include <QList>
 #include <QKeyEvent>
+#include <QDebug>
 
 #include "comida.h"
 #include "cuchillo.h"
 #include "personaje.h"
 #include "plataforma.h"
-
 
 class juego : public QGraphicsScene
 {

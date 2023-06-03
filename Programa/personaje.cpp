@@ -8,12 +8,12 @@ personaje::personaje(int posicionInicialX, int posicionInicialY)
 
     X0 = posicionInicialX;
     Y0 = posicionInicialY;
-    setRect(0, 0, 80, 85);
+    //setRect(0, 0, 80, 85);
     setPos(X0, Y0);
     posicionX = X0;
 
    // connect(timer, &QTimer::timeout, this, & personaje::actualizarMParabolico);
-    //timerOn();
+   //timerOn();
 }
 
 void personaje::saltar()
@@ -79,6 +79,14 @@ void personaje::aplicaraceleracion(QPointF Acel)
     Vy+=Acel.y();
     posicionX+=Vx*dt+Acel.x()*0.5*dt*dt;
     posicionY+=Vy*dt+Acel.y()*0.5*dt*dt;
+
+    if (posicionX + Vy <0 || posicionX + Vx + 1200)
+        Vx *= -1;
+    if (posicionY + Vy <0 || posicionY + Vy + 600)
+        Vy *= -1;
+    posicionX += Vx;
+    posicionY += Vy;
+
     setPos(posicionX,posicionY);
 }
 
@@ -93,18 +101,13 @@ void personaje::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
   painter->drawEllipse(boundingRect());
 }
 
-personaje::personaje(int r_, int x, int y)
-{
-    r = r_;
-    posx = x;
-    posy = y;
-    setPos(posx, posy);
-}
-
-void personaje::select_sprite(int x, int y)
-{
-
-}
+//personaje::personaje(int r_, int x, int y)
+//{
+//    r = r_;
+//    posx = x;
+//    posy = y;
+//    setPos(posx, posy);
+//}
 
 void personaje::actualizarMParabolico()
 {

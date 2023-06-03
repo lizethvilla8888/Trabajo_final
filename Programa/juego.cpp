@@ -8,14 +8,17 @@ juego::juego()
     r.load(":/imagenes/cocina.jpg");
     l.setTextureImage(r);
     setBackgroundBrush(l);
-    //cuchi=new cuchillo(100,100);
 
-    cuerpo = new personaje (20,700,600);
+    cuerpo = new personaje (700,600);
+
+
     cuchillos = new QList<cuchillo*>;
+
     addItem(cuerpo);
     paredes_();
     cuchillos_();
     comida_();
+
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(actualizar()));
     timer->start(100);
@@ -69,21 +72,6 @@ void juego::keyPressEvent(QKeyEvent *evento)
     if(evento->key()==Qt::Key_D){
         cuerpo->aplicaraceleracion({100,0});
     }
-//    for (int i = 0;i < monedas.size();i++) {
-//               if(personaje->collidesWithItem(monedas.at(i))){
-//                    //puntaje_->incremento(); // incremento de puntaje
-//                    removeItem(monedas.at(i));
-//                    monedas.removeAt(i);
-//                    i--;
-//                    }
-//            }
-//           //Colicion con muros
-//           for (int i = 0;i < paredes.size();i++) {
-//                if(personaje->collidesWithItem(paredes.at(i))){
-//                   personaje->Move_izquierda();
-//                }
-//           }
-
 
     if(evento->key()==Qt::Key_A){
         cuerpo->aplicaraceleracion({-100,0});
@@ -96,16 +84,31 @@ void juego::keyPressEvent(QKeyEvent *evento)
     if(evento->key()==Qt::Key_S){
       cuerpo->aplicaraceleracion({0,-100});
     }
-
-
-
-
 }
 
 void juego::actualizar()
 {
+    float random_x = rand()%1200;
+
     AplicarGravedad();
+
+    for (int i = 0; i < paredes.size(); i++) {
+        if (cuerpo->collidesWithItem(paredes.at(i))){
+            cuerpo->aplicaraceleracion({0,-10});
+        }
+        else{
+            cuerpo->aplicaraceleracion({0,10});
+        }
+        for (int j = 0; j < cuchillos->size(); j++) {
+            if (paredes[i]->collidesWithItem((*cuchillos)[j])) {
+                //cuchillos->(j) = cuerpo->setPosicionX(random_x);
+                //QDebug () << "colicion cuchilloa y paredes"<<can ;
+            }
+        }
+    }
+
 }
+
 void juego::AplicarGravedad()
 {
     /*QList<QGraphicsItem*> Items = this->items();
@@ -119,11 +122,11 @@ void juego::AplicarGravedad()
         }
     }*/
     cuerpo->aplicaraceleracion({0,10});
-    cuchillo *Cuchillo_=cuchillos->at(0);
+    cuchillo *Cuchillo_ = cuchillos->at(0);
     Cuchillo_->aplicaraceleracion({0,10});
-    for(cuchillo *Cuchillo__ : *cuchillos)
-    {
+    for(cuchillo *Cuchillo__ : *cuchillos){
         QPointF Pos=Cuchillo__->pos();
         Cuchillo__->aplicaraceleracion({0,10});
     }
+
 }
