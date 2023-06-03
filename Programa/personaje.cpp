@@ -72,6 +72,16 @@ void personaje::setPosicionX(float value)
     setPos(x(), Y0);
 }
 
+void personaje::aplicaraceleracion(QPointF Acel)
+{
+    float dt=0.1;
+    Vx+=dt*Acel.x();
+    Vy+=Acel.y();
+    posicionX+=Vx*dt+Acel.x()*0.5*dt*dt;
+    posicionY+=Vy*dt+Acel.y()*0.5*dt*dt;
+    setPos(posicionX,posicionY);
+}
+
 QRectF personaje::boundingRect() const
 {
     return QRectF(-r,-r,2*r,2*r);
@@ -79,8 +89,8 @@ QRectF personaje::boundingRect() const
 
 void personaje::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-  // painter->setBrush(Qt:: yellow);
-    // painter->drawEllipse(boundingRect());
+  painter->setBrush(QBrush(Qt:: yellow));
+  painter->drawEllipse(boundingRect());
 }
 
 personaje::personaje(int r_, int x, int y)

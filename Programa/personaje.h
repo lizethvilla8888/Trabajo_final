@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QTimer>
 #include <math.h>
+#include <QPainter>
 
 #define Angulo (float) 1.5708 // Equivalente de 90° en radianes.
 #define G (float) 9.81 // Valor promedio de la gravedad.
@@ -40,6 +41,7 @@ public:
     float getT() const;
     void setY0(float value);
     void setPosicionX(float value);
+    void aplicaraceleracion(QPointF Acel);
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

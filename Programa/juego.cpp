@@ -2,20 +2,24 @@
 
 juego::juego()
 {
+    // get obtener set modificar
     QBrush l; // imagen de fondo
     QImage r;
     r.load(":/imagenes/WhatsApp Image 2023-05-21 at 2.04.17 AM.jpeg");
     l.setTextureImage(r);
     setBackgroundBrush(l);
+    //cuchi=new cuchillo(100,100);
 
-    cuerpo = new personaje (20,30,30);
+    cuerpo = new personaje (20,500,500);
+    cuchillos = new QList<cuchillo*>;
 
     addItem(cuerpo);
     cuerpo->select_sprite(0,0);
     paredes_();
-    timer = new QTimer(this);
+    cuchillos_();
+    timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(actualizar()));
-    timer->start(16);
+    timer->start(100);
 }
 
 void juego::paredes_()
@@ -27,8 +31,71 @@ void juego::paredes_()
     crear_pared(666,400,34,300);
 }
 
+void juego::cuchillos_()
+{
+    crear_cuchillos(20, 0);
+    crear_cuchillos(100,0);
+    crear_cuchillos(200, 0);
+    crear_cuchillos(300, 0);
+}
+
 void juego::crear_pared(int x, int y, int ancho, int alto)
 {
     paredes.push_back(new plataforma (x,y,ancho,alto));
     addItem(paredes.back());
+}
+
+void juego::crear_cuchillos(int Pos_x, int Pos_y)
+{
+    int ancho = 15;
+    int alto = 15;
+    cuchillos->push_back(new cuchillo (Pos_x,Pos_y,ancho, alto));
+    addItem(cuchillos->back());
+}
+
+void juego::keyPressEvent(QKeyEvent *evento)
+{
+    if(evento->key()==Qt::Key_D){
+        cuerpo->aplicaraceleracion({100,0});
+    }
+
+    if(evento->key()==Qt::Key_A){
+        //cuerpo->();
+    }
+
+    if(evento->key()==Qt::Key_W){
+        //cuerpo->();
+    }
+
+    if(evento->key()==Qt::Key_S){
+        //cuerpo->();
+    }
+
+
+}
+
+void juego::actualizar()
+{
+    AplicarGravedad();
+}
+void juego::AplicarGravedad()
+{
+    /*QList<QGraphicsItem*> Items = this->items();
+    for(QGraphicsItem *Item : Items)
+    {
+        cuchillo *Cuchillo = dynamic_cast<cuchillo*>(Item);
+        if(Cuchillo)
+        {
+            QPointF Pos=Cuchillo->pos();
+            throw 0;
+        }
+    }*/
+    cuerpo->aplicaraceleracion({0,10});
+    cuchillo *Cuchillo_=cuchillos->at(0);
+    Cuchillo_->aplicaraceleracion({0,10});
+    for(cuchillo *Cuchillo__ : *cuchillos)
+    {
+        QPointF Pos=Cuchillo__->pos();
+        Cuchillo__->aplicaraceleracion({0,10});
+    }
 }

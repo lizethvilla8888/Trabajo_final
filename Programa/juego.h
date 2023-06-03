@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QList>
+#include <QKeyEvent>
 
 #include "comida.h"
 #include "cuchillo.h"
@@ -13,17 +14,29 @@
 
 class juego : public QGraphicsScene
 {
-
+    Q_OBJECT
 public:
     juego();
     void paredes_ ();
+    void cuchillos_ ();
+
 
 private:
+    float dt;
     personaje *cuerpo;
+    cuchillo *cuchi;
+    void AplicarGravedad();
+
     QTimer* timer;
     QList <plataforma *> paredes;
     void crear_pared(int x, int y, int ancho, int alto);
 
+    void crear_cuchillos(int Pos_x, int Pos_y);
+    QList <cuchillo *> *cuchillos;
+protected:
+    void keyPressEvent(QKeyEvent *evento);
+private slots:
+    void actualizar();
 };
 
 #endif // JUEGO_H
