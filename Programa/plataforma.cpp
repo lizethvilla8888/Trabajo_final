@@ -16,7 +16,7 @@ QRectF plataforma::boundingRect() const
 
 void plataforma::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setBrush(Qt::green);
+    painter->setBrush(Qt::blue);
     painter->drawRect(boundingRect());
 }
 

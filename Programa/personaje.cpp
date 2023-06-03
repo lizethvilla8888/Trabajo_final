@@ -12,8 +12,13 @@ personaje::personaje(int posicionInicialX, int posicionInicialY)
     setPos(X0, Y0);
     posicionX = X0;
 
+<<<<<<< HEAD
    // connect(timer, &QTimer::timeout, this, & personaje::actualizarMParabolico);
    //timerOn();
+=======
+    connect(timer, &QTimer::timeout, this, & personaje::actualizarMParabolico);
+    timerOn();
+>>>>>>> parent of 34a0b32 (cocina)
 }
 
 void personaje::saltar()

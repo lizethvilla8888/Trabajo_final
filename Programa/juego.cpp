@@ -5,20 +5,28 @@ juego::juego()
     // get obtener set modificar
     QBrush l; // imagen de fondo
     QImage r;
-    r.load(":/imagenes/cocina.jpg");
+    r.load(":/imagenes/WhatsApp Image 2023-05-21 at 2.04.17 AM.jpeg");
     l.setTextureImage(r);
     setBackgroundBrush(l);
 
+<<<<<<< HEAD
     cuerpo = new personaje (700,600);
 
 
+=======
+    cuerpo = new personaje (20,500,500);
+>>>>>>> parent of 34a0b32 (cocina)
     cuchillos = new QList<cuchillo*>;
 
     addItem(cuerpo);
+    cuerpo->select_sprite(0,0);
     paredes_();
     cuchillos_();
+<<<<<<< HEAD
     comida_();
 
+=======
+>>>>>>> parent of 34a0b32 (cocina)
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(actualizar()));
     timer->start(100);
@@ -26,12 +34,11 @@ juego::juego()
 
 void juego::paredes_()
 {
-    // 1200,600
-    crear_pared(0,523,1300,34);
-    //crear_pared(0,0,3,800);
-    //crear_pared(1300,0,3,800);
-    //crear_pared(0,398,34,700);
-    //crear_pared(666,400,34,300);
+    crear_pared(0,0,700,34);
+    crear_pared(0,0,34,233);
+    crear_pared(666,0,34,233);
+    crear_pared(0,398,34,700);
+    crear_pared(666,400,34,300);
 }
 
 void juego::cuchillos_()
@@ -40,11 +47,6 @@ void juego::cuchillos_()
     crear_cuchillos(100,0);
     crear_cuchillos(200, 0);
     crear_cuchillos(300, 0);
-}
-
-void juego::comida_()
-{
-    crear_comida(300,300,50,30);
 }
 
 void juego::crear_pared(int x, int y, int ancho, int alto)
@@ -61,12 +63,6 @@ void juego::crear_cuchillos(int Pos_x, int Pos_y)
     addItem(cuchillos->back());
 }
 
-void juego::crear_comida(int x, int y, int w_, int h_)
-{
-    comidas.push_back(new comida (x,y,w_,h_));
-    addItem(comidas.back());
-}
-
 void juego::keyPressEvent(QKeyEvent *evento)
 {
     if(evento->key()==Qt::Key_D){
@@ -74,16 +70,21 @@ void juego::keyPressEvent(QKeyEvent *evento)
     }
 
     if(evento->key()==Qt::Key_A){
-        cuerpo->aplicaraceleracion({-100,0});
+        //cuerpo->();
     }
 
     if(evento->key()==Qt::Key_W){
-        cuerpo->aplicaraceleracion({0,100});
+        //cuerpo->();
     }
 
     if(evento->key()==Qt::Key_S){
-      cuerpo->aplicaraceleracion({0,-100});
+        //cuerpo->();
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 34a0b32 (cocina)
 }
 
 void juego::actualizar()
