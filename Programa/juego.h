@@ -19,20 +19,24 @@ public:
     juego();
     void paredes_ ();
     void cuchillos_ ();
+    void comida_ ();
 
 
 private:
     float dt;
     personaje *cuerpo;
     cuchillo *cuchi;
-    void AplicarGravedad();
 
     QTimer* timer;
     QList <plataforma *> paredes;
-    void crear_pared(int x, int y, int ancho, int alto);
-
-    void crear_cuchillos(int Pos_x, int Pos_y);
     QList <cuchillo *> *cuchillos;
+    QList <comida *> comidas;
+
+    void crear_pared(int x, int y, int ancho, int alto);
+    void crear_cuchillos(int Pos_x, int Pos_y);
+    void crear_comida (int x, int y, int w_, int h_);
+    void AplicarGravedad();
+
 protected:
     void keyPressEvent(QKeyEvent *evento);
 private slots:

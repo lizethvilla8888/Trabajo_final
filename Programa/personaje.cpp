@@ -12,8 +12,8 @@ personaje::personaje(int posicionInicialX, int posicionInicialY)
     setPos(X0, Y0);
     posicionX = X0;
 
-    connect(timer, &QTimer::timeout, this, & personaje::actualizarMParabolico);
-    timerOn();
+   // connect(timer, &QTimer::timeout, this, & personaje::actualizarMParabolico);
+    //timerOn();
 }
 
 void personaje::saltar()

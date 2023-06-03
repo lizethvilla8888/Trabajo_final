@@ -37,12 +37,12 @@ delta = del ;
 
 QRectF cuchillo::boundingRect() const
 {
-    return QRectF(-radio,-radio,2*radio,2*radio);
+    return QRectF(0,0,ancho,alto);
 }
 
 void cuchillo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setBrush(Qt::yellow);
+    painter->setBrush(Qt::blue);
     painter->drawEllipse(boundingRect());
 }
 

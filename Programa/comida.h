@@ -5,13 +5,12 @@
 #include <QPainter>
 #include <vector>
 
-class comida
+class comida : public QGraphicsItem
 {
     int w,h;
     int posx, posy;
 public:
     comida(int x, int y,int w_, int h_);
-    ~comida();
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 };
