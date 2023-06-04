@@ -1,15 +1,19 @@
 #include "cuchillo.h"
 
-
 cuchillo::cuchillo(int posicionInicialX, int posicionInicialY, int ancho_, int alto_)
 {
     posicionX=posicionInicialX;
     posicionY=posicionInicialY;
     ancho = ancho_;
     alto = alto_ ;
-    //posicionInicialX=posicionInicialX;
-    //posicionInicialY=posicionInicialY;
+    radio = 10;
     setPos(posicionX, posicionY);
+
+    //dibuja cuchillo
+
+//    setScale(0.10);
+//    setTransformOriginPoint(50,50);
+//    setRotation(180);
     /*V = v;
     V0 = 78;
     Vx = V0 * cos(Angulo);
@@ -27,14 +31,6 @@ delta = del ;
     //timer->start(15);*/
 }
 
-//void cuchillo::actulalizarMparabolico()
-//{
-//    posicionX = X0 - Vx*t;
-//    posicionY = Y0 - Vy*t + ((G*t*t)/2);
-//    setPos(posicionX, posicionY);
-//    t += 0.1;
-//}
-
 QRectF cuchillo::boundingRect() const
 {
     return QRectF(-radio,-radio,2*radio,2*radio);
@@ -42,7 +38,7 @@ QRectF cuchillo::boundingRect() const
 
 void cuchillo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setBrush(Qt::yellow);
+    painter->setBrush(Qt::black);
     painter->drawEllipse(boundingRect());
 }
 
@@ -55,6 +51,24 @@ void cuchillo::aplicaraceleracion(QPointF Acel)
     posicionY+=Vy*dt+Acel.y()*0.5*dt*dt;
     setPos(posicionX,posicionY);
 }
+
+float cuchillo::getPosicionX() const
+{
+    return posicionX;
+}
+
+float cuchillo::getPosicionY() const
+{
+    return posicionY;
+}
+
+//void cuchillo::actulalizarMparabolico()
+//{
+//    posicionX = X0 - Vx*t;
+//    posicionY = Y0 - Vy*t + ((G*t*t)/2);
+//    setPos(posicionX, posicionY);
+//    t += 0.1;
+//}
 
 //void cuchillo::calcularVelocidad()
 //{

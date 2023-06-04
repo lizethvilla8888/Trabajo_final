@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Ladroncito");
 }
 
-
-
 MainWindow::~MainWindow()
 {
     delete ui;

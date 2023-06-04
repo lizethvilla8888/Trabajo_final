@@ -3,9 +3,13 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
+#include <QObject>
 #include <QTimer>
 #include <math.h>
 #include <QPainter>
+
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
 
 #define Angulo (float) 1.22173
 #define G (float) 9.81
@@ -43,6 +47,8 @@ public:
 
 //    void actualizar_posicion ();
 
+    float getPosicionX() const;
+    float getPosicionY() const;
 };
 
 #endif // CUCHILLO_H

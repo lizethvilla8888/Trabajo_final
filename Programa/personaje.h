@@ -17,8 +17,10 @@ private:
     QTimer *timer;
     float posicionX;
     float posicionY;
+
     float X0;
     float Y0;
+
     float V0;
     float Vx;
     float Vy;
