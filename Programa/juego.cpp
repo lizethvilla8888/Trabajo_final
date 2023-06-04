@@ -13,9 +13,12 @@ juego::juego()
     cuerpo = new personaje (20,700,600);
     cuchillos = new QList<cuchillo*>;
     addItem(cuerpo);
+
+    gane = new ganaste;
+    perdi = new perdio;
+
     paredes_();
     cuchillos_();
-
 
 
     comida_();
@@ -26,7 +29,14 @@ juego::juego()
 
     timer_1_colici = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(colision_cuchillos()));
-    timer_1_colici->start(100);
+    timer_1_colici->start(15);
+}
+
+juego::~juego()
+{
+    delete gane;
+    delete perdi;
+    delete cuerpo;
 }
 
 void juego::keyPressEvent(QKeyEvent *evento)
@@ -62,12 +72,9 @@ void juego::colision_cuchillos()
             cuchillos->removeAt(j);
             cuchillos_();
             qDebug() << "Cantidad de cuchillos:" << cuchillos->size();
-
         }
 
     }
-
-
 //        cuchillo *Cuchillo_=cuchillos->at(0);
 //        Cuchillo_->aplicaraceleracion({0,10});
 //        for(cuchillo *Cuchillo__ : *cuchillos)
@@ -93,8 +100,8 @@ void juego::AplicarGravedad()
     cuerpo->aplicaraceleracion({0,7});
 
     for (cuchillo *Cuchillo__ : *cuchillos){
-        QPointF Pos = Cuchillo__->pos();
-        Cuchillo__->aplicaraceleracion({0, 10});
+        //QPointF Pos = Cuchillo__->pos();
+        Cuchillo__->aplicaraceleracion({0, 60});
     }
          //   qDebug ()<< "aceleracion aplicada";
 }
@@ -123,10 +130,10 @@ void juego::paredes_()
 {
     // 1200,600
     crear_pared(0,523,1300,34);
-    //crear_pared(0,0,3,800);
-    //crear_pared(1300,0,3,800);
-    //crear_pared(0,398,34,700);
-    //crear_pared(666,400,34,300);
+    crear_pared(254,406,100,10);
+    crear_pared(413,300,100,10);
+    crear_pared(837,311,100,10);
+    crear_pared(666,400,100,10);
 }
 
 void juego::cuchillos_()
@@ -142,5 +149,13 @@ void juego::cuchillos_()
 
 void juego::comida_()
 {
-    crear_comida(300,300,50,30);
+    crear_comida(300,380,20,20);
+    crear_comida(459,276,20,20);
+    crear_comida(883,285,20,20);
+    crear_comida(712,374,20,20);
+
+//    crear_comida(300,380,20,20);
+//    crear_comida(367,276,20,20);
+//    crear_comida(791,285,20,20);
+//    crear_comida(620,374,20,20);
 }

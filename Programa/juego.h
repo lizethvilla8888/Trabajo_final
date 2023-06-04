@@ -8,6 +8,9 @@
 #include <QDebug>
 #include <random>
 
+#include "ganaste.h"
+#include "perdio.h"
+
 #include "comida.h"
 #include "cuchillo.h"
 #include "personaje.h"
@@ -19,12 +22,16 @@ class juego : public QGraphicsScene
     Q_OBJECT
 public:
     juego();
+    ~juego();
     void paredes_ ();
     void cuchillos_ ();
     void comida_ ();
 
 
 private:
+    ganaste *gane;
+    perdio *perdi;
+
     float dt;
 
     QTimer* timer;

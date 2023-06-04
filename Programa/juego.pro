@@ -9,26 +9,34 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bala.cpp \
     barra.cpp \
     comida.cpp \
     cuchillo.cpp \
+    ganaste.cpp \
     juego.cpp \
     main.cpp \
     mainwindow.cpp \
+    perdio.cpp \
     personaje.cpp \
     plataforma.cpp
 
 HEADERS += \
+    bala.h \
     barra.h \
     comida.h \
     cuchillo.h \
+    ganaste.h \
     juego.h \
     mainwindow.h \
+    perdio.h \
     personaje.h \
     plataforma.h
 
 FORMS += \
-    mainwindow.ui
+    ganaste.ui \
+    mainwindow.ui \
+    perdio.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

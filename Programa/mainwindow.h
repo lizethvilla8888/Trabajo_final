@@ -1,8 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "juego.h"
 #include <QMainWindow>
+
+#include "juego.h"
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,7 +24,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
     juego *scene;
+
 };
 
 #endif // MAINWINDOW_H
