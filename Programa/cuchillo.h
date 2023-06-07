@@ -3,7 +3,6 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
-#include <QObject>
 #include <QTimer>
 #include <math.h>
 #include <QPainter>
@@ -14,7 +13,7 @@
 #define Angulo (float) 1.22173
 #define G (float) 9.81
 
-class cuchillo :   public QObject, public QGraphicsRectItem
+class cuchillo : public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 private:
@@ -40,12 +39,6 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     void calcularVelocidad();
     void aplicaraceleracion (QPointF Acel);
-    //    double getPosicion_x() const;
-//    void setPosicion_x(double value);
-//    double getPosicion_y() const;
-//    void setPosicion_y(double value);
-
-//    void actualizar_posicion ();
 
     float getPosicionX() const;
     float getPosicionY() const;

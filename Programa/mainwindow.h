@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
 #include "juego.h"
 
 
@@ -21,10 +20,8 @@ public:
 
 private slots:
 
-
 private:
     Ui::MainWindow *ui;
-
     juego *scene;
 
 };
