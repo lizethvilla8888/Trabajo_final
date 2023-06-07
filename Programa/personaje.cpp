@@ -7,7 +7,6 @@ personaje::personaje(int posicionInicialX, int posicionInicialY)
     setPos(posicionInicialX,posicionInicialY);
 }
 
-
 void personaje::aplicaraceleracion(QPointF Acel, QList<plataforma *> *paredes, QList<comida *> *monedas)
 {
     QPointF posi_inicial=pos();

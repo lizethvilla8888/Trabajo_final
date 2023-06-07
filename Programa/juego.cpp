@@ -53,12 +53,14 @@ void juego::actualizar()
 
 void juego::AplicarGravedad()
 {
+
     cuerpo->aplicaraceleracion({0,10},paredes,monedas);
 
     for(cuchillo *Cuchillo__ : *cuchillos)
     {
         Cuchillo__->aplicaraceleracion({0,10});
     }
+
 }
 
 void juego::crear_monedas(int x, int y, int ancho, int alto)
@@ -80,14 +82,11 @@ void juego::crear_cuchillos(int Pos_x, int Pos_y)
     addItem(cuchillos->back());
 }
 
-
-
 void juego::comida_()
 {
-
     monedas = new QList<comida*>;
 
-    crear_monedas(50,50,5,5);
+     crear_monedas(50,50,5,5);
      crear_monedas(159,46,10,10);
      crear_monedas(210,46,10,10);
      crear_monedas(260,46,10,10);
@@ -493,7 +492,6 @@ void juego::paredes_()
     crear_pared(620, 540, 20, 20);
     crear_pared(660, 540, 20, 20);
 
-
     crear_pared(20, 580, 20, 20);
     crear_pared(60, 580, 20, 20);
     crear_pared(100, 580, 20, 20);
@@ -547,15 +545,11 @@ void juego::paredes_()
     crear_pared(580, 660, 20, 20);
     crear_pared(620, 660, 20, 20);
     crear_pared(660, 660, 20, 20);
-
-
 }
-
 
 void juego::colision_cuchillos()
 {
     for (int j = 0; j < cuchillos->size(); j++) {
-        //if (paredes[i]->collidesWithItem((*cuchillos)[j]))
         cuchillo *cuchilloActual = (*cuchillos)[j];
         if (cuchilloActual->getPosicionY()>800 && cuchilloActual->getPosicionX() != 0){
             cuchillos->removeAt(j);
@@ -577,8 +571,6 @@ QList<comida *> juego::eliminarMonedas(QList<comida *> monedas, int pos)
     return aux;
     if (monedas.isEmpty())
     {
-        //personaje->ganaste();
         timer->stop();
-        qDebug ()<< "que viva la chucha";
     }
 }

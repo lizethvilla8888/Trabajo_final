@@ -20,13 +20,3 @@ void comida::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     QRectF rectangulo_peque(0,0,w,h);
     painter->drawRect(rectangulo_peque);
 }
-
-int comida::getPosy() const
-{
-    return posy;
-}
-
-int comida::getH() const
-{
-    return h;
-}

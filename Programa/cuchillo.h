@@ -10,9 +10,6 @@
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 
-#define Angulo (float) 1.22173
-#define G (float) 9.81
-
 class cuchillo : public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
@@ -34,12 +31,9 @@ private:
 
 public:
     cuchillo(int posicionInicialX, int posicionInicialY, int ancho_, int alto_);
-    void actulalizarMparabolico();
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
-    void calcularVelocidad();
     void aplicaraceleracion (QPointF Acel);
-
     float getPosicionX() const;
     float getPosicionY() const;
 };
